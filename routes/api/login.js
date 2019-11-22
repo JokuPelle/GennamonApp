@@ -3,7 +3,7 @@ const router = express.Router();
 
 //User model
 const User = require("../../models/User");
-
+//
 // @route POST login
 // @desc  Login
 router.post("/", (req, res) => {
