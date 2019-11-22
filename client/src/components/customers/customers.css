@@ -10,3 +10,7 @@ li {
   line-height: 2rem;
   border-bottom: 1px dotted #777;
 }
+
+div {
+  color: #688;
+}

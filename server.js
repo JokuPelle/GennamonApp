@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyparser = require("body-parser"); //Help with taking requests and reading through the request body
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 const users = require("./routes/api/users");
@@ -8,6 +9,7 @@ const login = require("./routes/api/login");
 
 //Body-Parser Setup
 app.use(bodyparser.json());
+app.use(cookieParser());
 
 //MongoDB Setup
 const db = require("./config/keys").mongoURI;
