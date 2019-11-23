@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const app = express();
 
-const users = require("./routes/api/users");
+const posts = require("./routes/api/posts");
 const login = require("./routes/api/login");
+const userpage = require("./routes/api/userpage");
 
-//Body-Parser Setup
+//Body-Parser & Cookie-Parser Setup
 app.use(bodyparser.json());
 app.use(cookieParser());
 
@@ -19,8 +20,9 @@ mongoose
     .catch(err => console.log(err));
 
 //Use routes
-app.use("/api/users", users);
+app.use("/api/posts", posts);
 app.use("/api/login", login);
+app.use("/api/userpage", userpage);
 
 app.get("/api/customers", (req, res) => {
     const customers = [

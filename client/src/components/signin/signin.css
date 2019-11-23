@@ -1,7 +1,58 @@
+/*Background*/
 div {
-    background-color: #701;
+    background-color: #2C3531;
+}
+/*Button*/
+.btn {
+    background-color: #D9B08C;
+    color: rgb(146, 111, 80);
+    border-color: rgb(146, 111, 80);
+}
+/*Login Status*/
+.loginStatus {
+    background-color: #2C3531;
+}
+/*Input Box*/
+.loginInput {
+    display: inline-block;
+    background-color: #D1E8E2;
+    width: 55%;
+    max-width: 300px;
 }
 
-.textinput {
-    background-color: aqua;
+.postInput {
+    display: inline-block;
+    background-color: #D1E8E2;
+    font-size: small;
+    width: 75%;
+    max-width: 500px;
+}
+
+.buttonRow {
+    display: block;
+}
+
+.postBack {
+    padding: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #D9B08C;
+}
+
+.postUser {
+    color: black;
+    text-align: start;
+    margin-left: 5px;
+}
+.postMessage {
+    margin-left: 15px;
+    margin-bottom: 0px;
+    text-align: start;
+    color: black;
+}
+.postMessageGreen {
+    margin-left: 15px;
+    margin-bottom: 0px;
+    text-align: start;
+    color: green;
 }

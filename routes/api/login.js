@@ -37,21 +37,24 @@ router.post("/login", (req, res) => {
 // @desc  Verifies which user is logged in from cookies
 router.get("/verify", (req, res) => {
     //console.log(req.cookies.userSession);
-    if (!req.cookies.userSession) res.json({success: false, message: "No one is logged in"});
-    User.findOne({_id: req.cookies.userSession})
-        .then(founduser => {
-            console.log(founduser);
-            if (!founduser) {
-                res.json({success: false, message: "Error: Invalid"});
-            } else res.json({success: true, user: founduser.username, message: "All good"});
-    }).catch(err => console.log("Error: Error with verification", err));
+    if (!req.cookies.userSession) {
+        res.json({success: false, message: "No one is logged in"});
+    } else {
+        User.findOne({_id: req.cookies.userSession})
+            .then(founduser => {
+                //console.log(founduser);
+                if (!founduser) {
+                    res.json({success: false, message: "Error: Invalid"});
+                } else res.json({success: true, user: founduser.username, message: "All good"});
+        }).catch(err => console.log("Error: Error with verification", err));
+    }
 });
 
 // @route GET login/logout
 // @desc  Deletes the cookie
 router.get("/logout", (req, res) => {
-    console.log("All cookies: "+req.headers.cookie);
-    console.log("One cookie: "+req.cookies.userSession);
+    //console.log("All cookies: "+req.headers.cookie);
+    //console.log("One cookie: "+req.cookies.userSession);
     Session.deleteOne({userId: req.cookies.userSession}, (err) => {
         if (err) res.json({success: false, message: "Logout failed"});
     })
@@ -64,11 +67,19 @@ router.get("/logout", (req, res) => {
 // @route POST login/new
 // @desc  Create a new user
 router.post("/new", (req, res) => {
-    const newUser = new User({
-        username: req.body.username,
-        password: req.body.password
+    User.findOne({username: req.body.username}, (err, existingUser) => {
+        if (err) { res.json({success: false, message: "User Sweep failed"}); }
+        else if (existingUser) { 
+            console.log("user found!");
+            res.json({success: false, message: "User already exists"}); 
+        } else {
+            const newUser = new User({
+                username: req.body.username,
+                password: req.body.password
+            });
+            newUser.save().then(user => res.json({success: true, user}));
+        }
     });
-    newUser.save().then(user => res.json(user));
 });
 
 module.exports = router;
