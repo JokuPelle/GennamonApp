@@ -9,7 +9,7 @@ const Session = require("../../models/UserSession");
 // @desc  Login, creates a userSession and cookie
 router.post("/login", (req, res) => {
     if (req.cookies.userSession) res.json({success: false, message: "Someone is already logged in!"});
-    User.findOne({username: req.body.username})
+    User.findOne({username: { $regex: new RegExp(req.body.username, "i") } } )
         .then(foundUser => {
             if (foundUser === null) {
                 res.status(404).json({success: false, message: "Error: User not found"});
@@ -25,7 +25,6 @@ router.post("/login", (req, res) => {
                     if (!savedSession) res.json({success: false, message: "Failed to create a session"});
                     res.status(200).cookie("userSession", foundUser.id).json({success: true, message: "Valid sign in", token: savedSession.id});
                 });
-                //res.status(200).json({success: true, message: "Logged in"});
             }
             else {
                 res.status(200).json({success: false, message: "Error: Wrong password"});
@@ -67,7 +66,7 @@ router.get("/logout", (req, res) => {
 // @route POST login/new
 // @desc  Create a new user
 router.post("/new", (req, res) => {
-    User.findOne({username: req.body.username}, (err, existingUser) => {
+    User.findOne({username: { $regex: new RegExp(req.body.username, "i") } }, (err, existingUser) => {
         if (err) { res.json({success: false, message: "User Sweep failed"}); }
         else if (existingUser) { 
             console.log("user found!");

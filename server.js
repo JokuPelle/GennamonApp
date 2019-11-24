@@ -22,7 +22,7 @@ mongoose
 //Use routes
 app.use("/api/posts", posts);
 app.use("/api/login", login);
-app.use("/api/userpage", userpage);
+app.use("/userpage/api/", userpage);
 
 app.get("/api/customers", (req, res) => {
     const customers = [

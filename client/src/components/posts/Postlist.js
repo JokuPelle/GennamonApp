@@ -16,12 +16,23 @@ class Postlist extends Component {
     }
 
     loadPosts = () => {
-        console.log("load all posts");
-        fetch("/api/posts/load")
-            .then(res => res.json())
-            .then(data => {
-                this.setState({posts: data.posts});
-            })
+        if (!this.props.singleUser) {
+            console.log("load all posts");
+            fetch("/api/posts/load")
+                .then(res => res.json())
+                .then(data => {
+                    this.setState({posts: data.posts});
+                }
+            );
+        } else {
+            console.log("load user posts");
+            fetch("/api/posts/load?id="+ this.props.user)
+                .then(res => res.json())
+                .then(data => {
+                    this.setState({posts: data.posts});
+                }
+            );
+        }
     }
     //Problem is that it loads all the posts again instead of not currently shown ones
     loadMore = () => {
@@ -33,6 +44,7 @@ class Postlist extends Component {
         console.log("postlist mount");
         this.loadPosts();
     }
+    //xs="4" md="3" lg="2"
     render() {
         const listItems = this.state.posts.slice(0,this.state.postsShown).map((item, key) =>
             <OnePost key={key} username={item.username} message={item.message} date={Date.parse(item.date)}/>);
@@ -40,7 +52,7 @@ class Postlist extends Component {
             <div style={{display:"inline"}}>
                 <Container>
                     <Row className="justify-content-md-center">
-                        <Col xs="8" md="5" lg="4">
+                        <Col xs="8" md="6" lg="4">
                             <h3 className="loginStatus m-2">Recent Posts</h3>
                         </Col>
                         <Col xs="4" md="3" lg="2">

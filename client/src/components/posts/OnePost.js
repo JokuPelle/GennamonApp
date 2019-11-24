@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,7 +13,6 @@ class OnePost extends Component {
     };
 
     render() {
-        
         const dateparsed = new Date(this.props.date).toLocaleString();
         const messagesplit = this.props.message.split("\n").map((i,key) => 
             <p key={key} className={this.greenText(i)}>{i}</p>
@@ -21,7 +21,9 @@ class OnePost extends Component {
             <Container>
                 <Row className="justify-content-md-center">
                     <Col xs="12" md="8" lg="6" className="postBack">
-                        <h5 className="postUser">{this.props.username} - {dateparsed}</h5>
+                        <Link to={"/userpage/"+this.props.username}>
+                            <h5 className="postUser">{this.props.username} - {dateparsed}</h5>
+                        </Link>
                         {messagesplit}
                         <div style={{height:"5px", backgroundColor:"#D9B08C"}}/>
                     </Col>

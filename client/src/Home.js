@@ -3,6 +3,7 @@ import React , {Component} from 'react';
 //Import boostrap and app css files
 import "bootstrap/dist/css/bootstrap.css";
 import './App.css';
+import './components/signin/signin.css';
 
 //Import components and their respective css files
 import Signin from "./components/signin/Signin";
@@ -55,7 +56,6 @@ class Home extends Component {
     //this.checkLoginStatus();
     return (
       <div className="App">
-        <h1 className="text-center p-2 m-0">Gennamon</h1>
         <Signin
           loggedInStatus={this.state.loggedInStatus}
           checkLoginStatus={this.checkLoginStatus}
@@ -65,7 +65,7 @@ class Home extends Component {
         <div className="break"/>
         <Newpost username={this.state.user}/>
         <div className="break"/>
-        <Postlist/>
+        <Postlist singleUser={false} user={this.state.user}/>
       </div>
     );
   }
