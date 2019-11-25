@@ -1,7 +1,5 @@
 /*Background*/
-div {
-    background-color: #2C3531;
-}
+
 /*Button*/
 .btn {
     background-color: #D9B08C;
@@ -11,6 +9,8 @@ div {
 /*Login Status*/
 .loginStatus {
     background-color: #2C3531;
+    padding: 8px;
+    margin: 0px;
 }
 /*Input Box*/
 .loginInput {
@@ -32,6 +32,9 @@ div {
     display: block;
 }
 
+.container {
+}
+
 .postBack {
     padding: 0px;
     margin-bottom: 10px;
@@ -42,7 +45,6 @@ div {
 .postUser {
     color: black;
     text-align: start;
-    margin-left: 5px;
 }
 .postMessage {
     margin-left: 15px;
@@ -55,4 +57,8 @@ div {
     margin-bottom: 0px;
     text-align: start;
     color: green;
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }

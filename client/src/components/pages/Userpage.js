@@ -6,8 +6,6 @@ import Postlist from "../posts/Postlist";
 import Pagebuttons from "../signin/Pagebuttons";
 
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 
 class Userpage extends Component {
@@ -15,6 +13,7 @@ class Userpage extends Component {
         super(props);
         this.state = {
             user: "",
+            isYou: false,
             you: "",
             screenWidth: null
         };
@@ -27,9 +26,9 @@ class Userpage extends Component {
             .then(data => {
                 this.setState({user: data.user});
                 if (data.isThisUser) {
-                    this.setState({you: " (You)"});
+                    this.setState({isYou: true, you: " (You)"});
                 } else {
-                    this.setState({you: ""});
+                    this.setState({isYou: false, you: ""});
                 }
             })
     }
@@ -47,18 +46,15 @@ class Userpage extends Component {
         window.removeEventListener("resize", this.updateWindowDimensions);
     }
     
+    //Send url-mode name to postlist sice that's only used in a fecth request
     render() {
         return(
             <div className="App">
-                <h3 className="text-center loginStatus mt-2">{this.props.match.params.id}'s Page{this.state.you}</h3>
-                <Pagebuttons/>
+                <h3 className="text-center loginStatus">{decodeURIComponent(this.props.match.params.id)}'s Page{this.state.you}</h3>
+                <Pagebuttons isYou={this.state.isYou}/>
                 <div className="break"/>
                 <Container>
-                    <Row>
-                        <Col>
-                            <Postlist singleUser={true} user={this.props.match.params.id}/>
-                        </Col>
-                    </Row>
+                    <Postlist singleUser={true} user={this.props.match.params.id}/>
                 </Container>
             </div>
         )

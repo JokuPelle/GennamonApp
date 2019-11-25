@@ -75,7 +75,7 @@ class Signin extends Component {
     }
 
     searchUser = () => {
-        fetch("/userpage/api/check/"+this.state.searchItem)
+        fetch("/userpage/api/check/"+encodeURIComponent(this.state.searchItem))
             .then(res => res.json())
             .then(data => {
                 if (data.success === false) this.setState({searchResult: "not found"});
@@ -96,9 +96,9 @@ class Signin extends Component {
         if (this.props.loggedInStatus === "LOGGED_IN") {
             return(
                 <div>
-                    <h3 className="loginStatus mt-2">Welcome {this.props.username}</h3>
+                    <h3 className="loginStatus">Welcome {this.props.username}</h3>
                     <ButtonToolbar className="buttonRow">
-                        <Link to={'/userpage/'+this.props.username} >
+                        <Link to={'/userpage/'+encodeURIComponent(this.props.username)} >
                             <Button variant="" className="m-2">Profile</Button>
                         </Link>
                         <Button variant="" className="m-2" onClick={this.searchUser}>Search</Button>
@@ -115,9 +115,9 @@ class Signin extends Component {
         } else {
             return(
                 <div>
-                    <h3 className="loginStatus mt-2">You're not logged in.</h3>
+                    <h3 className="loginStatus">You're not logged in.</h3>
                     <Form>
-                        <Form.Group>
+                        <Form.Group style={{margin:"0px"}}>
                         <Form.Control className="loginInput mb-2" type="text" placeholder="Username" value={this.state.user} onChange={this.changeUser}/>
                         <br/>
                         <Form.Control className="loginInput" type="password" placeholder="Password" value={this.state.password} onChange={this.changePassword}/>

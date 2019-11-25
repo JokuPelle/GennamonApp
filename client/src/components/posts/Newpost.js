@@ -44,7 +44,7 @@ class Newpost extends Component {
         if (this.props.username === "") {
             return(
                 <div>
-                    <h2 className="m-2">You need to be logged in to make a post</h2>
+                    <h2 className="p-2 m-0">You need to be logged in to make a post</h2>
                 </div>
             );
         } else if (this.state.readyToPost === false ) {

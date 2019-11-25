@@ -23,7 +23,7 @@ router.post("/new", (req, res) => {
 // If so, then give Post.fin() method a filter 
 const userFilter = (request) => {
     if (request.query.id) {
-        console.log("id given "+request.query.id);
+        console.log("id given "+decodeURIComponent(request.query.id));
         return({username: request.query.id});
     } else {
         console.log("no id given");
@@ -33,14 +33,11 @@ const userFilter = (request) => {
 // @route GET posts/load
 // @desc  Get all posts
 router.get("/load/", (req, res) => {
-    Post.find(userFilter(req),(err, posts) => {
-        if (err) {
-            res.json({success: false, error: err, message: "Error with finding posts"});
-        }
-        else if (posts.length < 1) {
-            res.json({success: false, message: "No posts found"});
-        }
-    }).sort({date:-1}).then(posts => res.json({success: true, message: "Posts loaded", posts}));
-});
+    Post.find(userFilter(req)).sort({date:-1})
+        .then(posts => {
+            res.json({success: true, message: "Posts loaded", posts});
+        });
+    }
+);
 
 module.exports = router;

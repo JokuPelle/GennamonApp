@@ -15,15 +15,22 @@ class OnePost extends Component {
     render() {
         const dateparsed = new Date(this.props.date).toLocaleString();
         const messagesplit = this.props.message.split("\n").map((i,key) => 
-            <p key={key} className={this.greenText(i)}>{i}</p>
+            <p key={key} style={{wordWrap:"break-word"}} className={this.greenText(i)}>{i}</p>
         );
         return(
-            <Container>
-                <Row className="justify-content-md-center">
-                    <Col xs="12" md="8" lg="6" className="postBack">
-                        <Link to={"/userpage/"+this.props.username}>
-                            <h5 className="postUser">{this.props.username} - {dateparsed}</h5>
+            <Container className="postBack">
+                <Row>
+                    <Col md="auto">
+                        <Link to={"/userpage/"+encodeURIComponent(this.props.username)}>
+                            <h5 className="postUser m-0">{this.props.username}</h5>
                         </Link>
+                    </Col>
+                    <Col md="auto" >
+                        <p className="postUser m-0" > - {dateparsed}</p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
                         {messagesplit}
                         <div style={{height:"5px", backgroundColor:"#D9B08C"}}/>
                     </Col>

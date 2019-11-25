@@ -8,7 +8,7 @@ const Post = require("../../models/Post");
 // @route GET userpage/check
 // @desc  check if url user exists
 router.get("/check/:id", (req, res) => {
-    User.findOne({username: { $regex: new RegExp(req.params.id, "i") } }, (err, foundUser) => {
+    User.findOne({username: { $regex: new RegExp(decodeURIComponent(req.params.id), "i") } }, (err, foundUser) => {
         if (err) {res.status(404).json({success: false, message: "Error with user sweep"});}
         else if (!foundUser) {console.log("user ot found!"); res.status(404).json({success: false, message: "No such user found"});}
         else {

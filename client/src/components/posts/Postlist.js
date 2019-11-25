@@ -26,7 +26,7 @@ class Postlist extends Component {
             );
         } else {
             console.log("load user posts");
-            fetch("/api/posts/load?id="+ this.props.user)
+            fetch("/api/posts/load?id="+this.props.user)
                 .then(res => res.json())
                 .then(data => {
                     this.setState({posts: data.posts});
@@ -49,11 +49,11 @@ class Postlist extends Component {
         const listItems = this.state.posts.slice(0,this.state.postsShown).map((item, key) =>
             <OnePost key={key} username={item.username} message={item.message} date={Date.parse(item.date)}/>);
         return(
-            <div style={{display:"inline"}}>
+            <div>
                 <Container>
                     <Row className="justify-content-md-center">
                         <Col xs="8" md="6" lg="4">
-                            <h3 className="loginStatus m-2">Recent Posts</h3>
+                            <h3 className="loginStatus">Recent Posts</h3>
                         </Col>
                         <Col xs="4" md="3" lg="2">
                             <Button variant="" className="m-2" onClick={this.loadPosts}>Refresh</Button>

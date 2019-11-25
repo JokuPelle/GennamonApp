@@ -28,3 +28,6 @@ serviceWorker.unregister();
 // +3 - Mongoose
 // 5  - Bootstrap
 // = 58
+
+//MAJOR FIXES NEEDED
+// Delted user pages and messages still show

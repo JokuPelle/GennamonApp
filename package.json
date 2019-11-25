@@ -1,5 +1,5 @@
 {
-  "name": "reactapp",
+  "name": "gennamon",
   "version": "1.0.0",
   "description": "basic express react",
   "main": "server.js",
@@ -12,6 +12,7 @@
   "author": "JokuPelle",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.7.1",
     "body-parser": "^1.19.0",
     "concurrently": "^5.0.0",
     "cookie-parser": "^1.4.4",
