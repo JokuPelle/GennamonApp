@@ -75,23 +75,24 @@ class Signin extends Component {
     }
 
     searchUser = () => {
-        fetch("/userpage/api/check/"+encodeURIComponent(this.state.searchItem))
+        fetch("/userpage/api/find/"+encodeURIComponent(this.state.searchItem))
             .then(res => res.json())
             .then(data => {
                 if (data.success === false) this.setState({searchResult: "not found"});
-                else if (data.success === true) this.setState({searchResult: data.user});
+                else if (data.success === true) this.setState({searchResult: data.users});
             })
     }
 
     render () {
-        let searchResult;
-        if (this.state.searchResult === "not found") { searchResult = <p className="mb-2">No such user found</p> }
-        else if (this.state.searchResult === "") { searchResult = <p className="mb-2">...</p> }
-        else { searchResult =
-            <Link to={"/userpage/"+this.state.searchResult}>
-                <p className="mb-2">User {this.state.searchResult} was found.</p>
-            </Link>
-             }
+        let searchResultText;
+        if (this.state.searchResult === "not found") { searchResultText = <p className="mb-2">No such user found</p> }
+        else if (this.state.searchResult === "") { searchResultText = <p className="mb-2">...</p> }
+        else { searchResultText =
+            this.state.searchResult.slice(0,4).map((item, key) => 
+                <Link key={key} to={"/userpage/"+encodeURIComponent(item)}>
+                    <p className="mb-2">User {item} was found.</p>
+                </Link>)
+        }
 
         if (this.props.loggedInStatus === "LOGGED_IN") {
             return(
@@ -109,7 +110,7 @@ class Signin extends Component {
                             <Form.Control className="loginInput text-center" type="text" placeholder="Search User" value={this.state.searchItem} onChange={this.changeSearch}/>
                         </FormGroup>
                     </Form>
-                    {searchResult}
+                    {searchResultText}
                 </div>
             )
         } else {

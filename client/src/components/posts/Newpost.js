@@ -34,7 +34,7 @@ class Newpost extends Component {
                 .then(data => {
                     if (data.success === true) {
                         this.setState({message: ""});
-                        alert("Post was created");
+                        //alert("Post was created");
                     } else alert(data.message);
                 });
         }
