@@ -14,13 +14,11 @@ app.use(cookieParser());
 
 
 const Promise = require("bluebird");
-let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-    mongoURLLabel = "";
+let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, mongoURLLabel = "";
 // Set up mongoose connection
 //var mongoose = require('mongoose');
 // Reading env variables (config example from https://github.com/sclorg/nodejs-ex/blob/master/server.js)
-var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-    mongoURLLabel = "";
+//var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, mongoURLLabel = "";
 // For local dev
 // var mongoURL = 'mongodb://localhost:27017/demodb';
 if (mongoURL == null) {
