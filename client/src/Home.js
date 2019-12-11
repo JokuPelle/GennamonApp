@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 
 //Import boostrap and app css files
-import "bootstrap/dist/css/bootstrap.css";
+//import "../../backend/node_modules/bootstrap/dist/css/bootstrap.css";
 import './App.css';
 import './components/signin/signin.css';
 

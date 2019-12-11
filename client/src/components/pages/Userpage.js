@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 //Import boostrap and app css files
-import "bootstrap/dist/css/bootstrap.css";
+//import "../../../../backend/node_modules/bootstrap/dist/css/bootstrap.css";
 import "../../App.css";
 import Postlist from "../posts/Postlist";
 import Pagebuttons from "../signin/Pagebuttons";

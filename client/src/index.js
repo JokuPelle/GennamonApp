@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 
 //App might be useless??
 //import App from "./App";
@@ -27,7 +28,8 @@ serviceWorker.unregister();
 // 5  - Mongo
 // +3 - Mongoose
 // 5  - Bootstrap
-// = 58
+// 5  - User registration
+// = 63
 
 //MAJOR FIXES NEEDED
-// Delted user pages and messages still show
+// Deleted user pages and messages still show
