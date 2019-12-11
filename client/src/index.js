@@ -30,6 +30,7 @@ serviceWorker.unregister();
 // 5  - Bootstrap
 // 5  - User registration
 // = 63
+// 5+5+3 - Docker Compatable & Rahti & More than 1 container
 
 //MAJOR FIXES NEEDED
 // Deleted user pages and messages still show

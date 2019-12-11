@@ -40,4 +40,17 @@ router.get("/load/", (req, res) => {
     }
 );
 
+router.post("/delete", (req, res) => {
+    Post.deleteOne({
+        username: req.body.username,
+        message: req.body.message
+    }, (err) => {
+        if (err) {
+            res.json({success: false, message: "Deletion failed"});
+        } else {
+            res.json({success: true, message: "Post deleted"});
+        }
+    })
+})
+
 module.exports = router;

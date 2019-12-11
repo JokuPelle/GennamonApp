@@ -15,15 +15,11 @@ app.use(cookieParser());
 app.get("/", (req, res) => {
   res.send("Home");
 });
-
+/*
+// MongoDB setup-----------------------------------------------------------
 const Promise = require("bluebird");
 let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, mongoURLLabel = "";
 // Set up mongoose connection
-//var mongoose = require('mongoose');
-// Reading env variables (config example from https://github.com/sclorg/nodejs-ex/blob/master/server.js)
-//var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, mongoURLLabel = "";
-// For local dev
-// var mongoURL = 'mongodb://localhost:27017/demodb';
 if (mongoURL == null) {
   var mongoHost, mongoPort, mongoDatabase, mongoPassword, mongoUser;
   // If using plane old env vars via service discovery
@@ -65,23 +61,22 @@ mongoose.connect(mongoURL, { useNewUrlParser: true , useUnifiedTopology: true});
 mongoose.Promise = Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+*/
 
-/*
-//MongoDB Setup
+//MongoDB Atlas Setup with keystring-----------------------------------------------------
 const db = require("./config/keys").mongoURI;
 mongoose
     .connect(db, { useNewUrlParser: true , useUnifiedTopology: true})
     .then(() => console.log("MongoDB connected!"))
     .catch(err => console.log(err));
-*/
+
+
 //Use routes
 app.use("/api/posts", posts);
 app.use("/api/login", login);
 app.use("/userpage/api/", userpage);
 
-//React runs on port 3000 so server runs on 5000
-//const port = process.env.PORT || 5000;
-//-----rahti port variable
+//React runs on port 3000 so server runs on 8080
 const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
