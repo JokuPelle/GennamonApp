@@ -17,7 +17,7 @@ const Promise = require("bluebird");
 let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 // Set up mongoose connection
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 // Reading env variables (config example from https://github.com/sclorg/nodejs-ex/blob/master/server.js)
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
