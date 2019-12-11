@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from "react-bootstrap/Button";
 
 class OnePost extends Component {
 
@@ -11,6 +12,22 @@ class OnePost extends Component {
         if (message.charAt(0) === ">") return("postMessageGreen");
         else return("postMessage");
     };
+
+    deletePost = () => {
+        fetch("/api/posts/delete", {
+            method: "POST",
+            body: JSON.stringify({
+                username: this.props.username,
+                message: this.props.message
+            }),
+            headers: {"Content-Type":"application/json"}})
+            .then(res => res.json())
+            .then(data => {
+                if (data.success === true) {
+                    this.props.reload();
+                }
+            });
+    }
 
     render() {
         const dateparsed = new Date(this.props.date).toLocaleString();
@@ -27,6 +44,9 @@ class OnePost extends Component {
                     </Col>
                     <Col md="auto" >
                         <p className="postUser m-0" > - {dateparsed}</p>
+                    </Col>
+                    <Col md="auto" >
+                        <Button onClick={this.props.reload}>Delete Post</Button>
                     </Col>
                 </Row>
                 <Row>
