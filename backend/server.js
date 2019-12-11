@@ -12,6 +12,9 @@ const userpage = require("./routes/api/userpage");
 app.use(bodyparser.json());
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+  res.send("Home");
+});
 
 const Promise = require("bluebird");
 let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, mongoURLLabel = "";
