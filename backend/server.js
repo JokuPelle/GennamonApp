@@ -58,7 +58,7 @@ if (mongoURL == null) {
   }
 }
 // Connecting to DB
-mongoose.connect(mongoURL);
+mongoose.connect(mongoURL, { useNewUrlParser: true , useUnifiedTopology: true});
 mongoose.Promise = Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
