@@ -34,6 +34,13 @@ class OnePost extends Component {
         const messagesplit = this.props.message.split("\n").map((i,key) => 
             <p key={key} style={{wordWrap:"break-word"}} className={this.greenText(i)}>{i}</p>
         );
+        let deleteButton;
+        if (this.props.canDelete === true) {
+            deleteButton =
+                <Col md="auto" >
+                    <Button variant="" className="deleteButton" onClick={this.deletePost}>Delete Post</Button>
+                </Col>
+        }
         return(
             <Container className="postBack">
                 <Row>
@@ -45,9 +52,7 @@ class OnePost extends Component {
                     <Col md="auto" >
                         <p className="postUser m-0" > - {dateparsed}</p>
                     </Col>
-                    <Col md="auto" >
-                        <Button onClick={this.props.reload}>Delete Post</Button>
-                    </Col>
+                    {deleteButton}
                 </Row>
                 <Row>
                     <Col>

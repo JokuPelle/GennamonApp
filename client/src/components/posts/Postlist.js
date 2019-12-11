@@ -47,7 +47,7 @@ class Postlist extends Component {
     //xs="4" md="3" lg="2"
     render() {
         const listItems = this.state.posts.slice(0,this.state.postsShown).map((item, key) =>
-            <OnePost key={key} username={item.username} message={item.message} date={Date.parse(item.date)} reload={this.loadPosts}/>);
+            <OnePost key={key} username={item.username} message={item.message} date={Date.parse(item.date)} canDelete={this.props.yourPosts} reload={this.loadPosts}/>);
         return(
             <div>
                 <Container>

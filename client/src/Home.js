@@ -65,7 +65,7 @@ class Home extends Component {
         <div className="break"/>
         <Newpost username={this.state.user}/>
         <div className="break"/>
-        <Postlist singleUser={false} user={this.state.user}/>
+        <Postlist singleUser={false} user={this.state.user} yourPosts={false}/>
       </div>
     );
   }

@@ -54,7 +54,7 @@ class Userpage extends Component {
                 <Pagebuttons isYou={this.state.isYou}/>
                 <div className="break"/>
                 <Container>
-                    <Postlist singleUser={true} user={this.props.match.params.id}/>
+                    <Postlist singleUser={true} user={this.props.match.params.id} yourPosts={this.state.isYou}/>
                 </Container>
             </div>
         )
