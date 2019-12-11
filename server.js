@@ -12,7 +12,7 @@ const userpage = require("./routes/api/userpage");
 app.use(bodyparser.json());
 app.use(cookieParser());
 
-/*
+
 const Promise = require("bluebird");
 let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
@@ -64,24 +64,24 @@ mongoose.connect(mongoURL);
 mongoose.Promise = Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-*/
 
+/*
 //MongoDB Setup
 const db = require("./config/keys").mongoURI;
 mongoose
     .connect(db, { useNewUrlParser: true , useUnifiedTopology: true})
     .then(() => console.log("MongoDB connected!"))
     .catch(err => console.log(err));
-
+*/
 //Use routes
 app.use("/api/posts", posts);
 app.use("/api/login", login);
 app.use("/userpage/api/", userpage);
 
 //React runs on port 3000 so server runs on 5000
-const port = process.env.PORT || 5000;
+//const port = process.env.PORT || 5000;
 //-----rahti port variable
-//const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-//ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5000,
+ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 app.listen(port, () => console.log(`Server started on ${port}.`));
