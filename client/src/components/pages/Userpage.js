@@ -24,11 +24,15 @@ class Userpage extends Component {
         fetch("api/check/"+checkUser)
             .then(res => res.json())
             .then(data => {
-                this.setState({user: data.user});
-                if (data.isThisUser) {
-                    this.setState({isYou: true, you: " (You)"});
+                if (data.success === false) {
+                    this.setState({user: "---User doesn't exist!---"});
                 } else {
-                    this.setState({isYou: false, you: ""});
+                    this.setState({user: data.user});
+                    if (data.isThisUser) {
+                        this.setState({isYou: true, you: " (You)"});
+                    } else {
+                        this.setState({isYou: false, you: ""});
+                    }
                 }
             })
     }
@@ -48,13 +52,21 @@ class Userpage extends Component {
     
     //Send url-mode name to postlist sice that's only used in a fecth request
     render() {
+        let pageTitle, userPostList;
+        if (this.state.user === "---User doesn't exist!---") {
+            pageTitle = <h3 className="text-center loginStatus">{this.state.user}</h3>
+            userPostList = <h3 className="text-center loginStatus">Unable to show posts</h3>
+        } else {
+            pageTitle = <h3 className="text-center loginStatus">{decodeURIComponent(this.props.match.params.id)}'s Page{this.state.you}</h3>
+            userPostList = <Postlist singleUser={true} user={this.props.match.params.id} yourPosts={this.state.isYou}/>
+        }
         return(
             <div className="App">
-                <h3 className="text-center loginStatus">{decodeURIComponent(this.props.match.params.id)}'s Page{this.state.you}</h3>
-                <Pagebuttons isYou={this.state.isYou}/>
+                {pageTitle}
+                <Pagebuttons isYou={this.state.isYou} user={decodeURIComponent(this.props.match.params.id)}/>
                 <div className="break"/>
                 <Container>
-                    <Postlist singleUser={true} user={this.props.match.params.id} yourPosts={this.state.isYou}/>
+                    {userPostList}
                 </Container>
             </div>
         )

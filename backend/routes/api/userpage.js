@@ -49,4 +49,24 @@ router.get("/check/:id", (req, res) => {
     });
 });
 
+// @route POST userpage/changePassword
+// @desc  change password
+router.post("/changepassword", (req, res) => {
+    User.findOneAndUpdate({
+        username: req.body.user,
+        password: req.body.old
+    }, {
+        password: req.body.new
+    }, (err, foundUser) => {
+        if (err) {
+            res.status(404).json({success: false, error: 1, message: "Error with changing password"});
+        } else if (!foundUser) {
+            console.log("password was wrong!");
+            res.json({success: false, error: 2, message: "Wrong old password!"});
+        } else {
+            res.json({success: true, message: "Password changed"});
+        }
+    })
+})
+
 module.exports = router;
