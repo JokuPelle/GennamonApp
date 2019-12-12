@@ -40,6 +40,8 @@ router.get("/load/", (req, res) => {
     }
 );
 
+// @route POST posts/delete
+// @desc  Delete a post
 router.post("/delete", (req, res) => {
     Post.deleteOne({
         username: req.body.username,
