@@ -56,8 +56,10 @@ class Signin extends Component {
                 headers: {"Content-Type": "application/json"}})
                 .then((res) => res.json())
                 .then(data => {
-                    if (data.success === true) alert("User was created succesfully");
-                    else alert(data.message);
+                    if (data.success === true) {
+                        this.logIn();
+                        alert("User was created succesfully.");
+                    } else alert(data.message);
                 });
             //alert("A user was submitted: " + this.state.user + " and their password is " + this.state.password);
         }
