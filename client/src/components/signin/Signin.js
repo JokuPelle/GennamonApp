@@ -40,7 +40,7 @@ class Signin extends Component {
                     //alert(data.message);
                 });
         }
-        if (event !== null) event.preventDefault();
+        //if (event !== null) event.preventDefault();
     }
 
     createAccount = (event) => {
