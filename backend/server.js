@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.get("/", (req, res) => {
   res.send("Home");
 });
-/*
+
 // MongoDB setup-----------------------------------------------------------
 const Promise = require("bluebird");
 let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL, mongoURLLabel = "";
@@ -61,15 +61,15 @@ mongoose.connect(mongoURL, { useNewUrlParser: true , useUnifiedTopology: true});
 mongoose.Promise = Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-*/
 
+/*
 //MongoDB Atlas Setup with keystring-----------------------------------------------------
 const db = require("./config/keys").mongoURI;
 mongoose
     .connect(db, { useNewUrlParser: true , useUnifiedTopology: true})
     .then(() => console.log("MongoDB connected!"))
     .catch(err => console.log(err));
-
+*/
 
 //Use routes
 app.use("/api/posts", posts);
