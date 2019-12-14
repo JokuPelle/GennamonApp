@@ -19,7 +19,7 @@
     width: 55%;
     max-width: 300px;
 }
-
+/*New Post Text Box*/
 .postInput {
     display: inline-block;
     background-color: #D1E8E2;
@@ -27,42 +27,42 @@
     width: 75%;
     max-width: 500px;
 }
-
+/*ButtonToolbar in Signin and Userpage*/
 .buttonRow {
     display: block;
 }
-
-.container {
-}
-
+/*Post background*/
 .postBack {
     padding: 0px;
     margin-bottom: 10px;
     width: 100%;
     background-color: #D9B08C;
 }
-
+/*Username of a post*/
 .postUser {
     color: black;
     text-align: start;
 }
+/*Actual Post*/
 .postMessage {
     margin-left: 15px;
     margin-bottom: 0px;
     text-align: start;
     color: black;
 }
+/*Actual Post (greentext)*/
 .postMessageGreen {
     margin-left: 15px;
     margin-bottom: 0px;
     text-align: start;
     color: green;
 }
+/*Common rows*/
 .row {
     margin-left: 0px;
     margin-right: 0px;
 }
-
+/*Post deletion button*/
 .deleteButton {
     padding: 0px 6px
 }

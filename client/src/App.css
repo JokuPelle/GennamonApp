@@ -1,3 +1,4 @@
+/*Overall background*/
 .App {
   text-align: center;
   color: #D1E8E2;
@@ -14,12 +15,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+/*Titles*/
 h1 {
   background-color: #116466;
   color: #D1E8E2;
 }
-
+/*Large breaks*/
 .break {
   background-color: #116466;
   height: 10px;
