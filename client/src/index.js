@@ -23,7 +23,7 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 //Todennäköset pisteet
-// 30 - Make posts, Multiple users, View users' posts, Basic CSS
+// 30 - Make posts, Multiple users, View users' posts, Basic CSS, node, npm
 // 15 - React frontend
 // 5  - Mongo
 // +3 - Mongoose
@@ -31,6 +31,3 @@ serviceWorker.unregister();
 // 5  - User registration
 // = 63
 // 5+5+3 - Docker Compatable & Rahti & More than 1 container
-
-//MAJOR FIXES NEEDED
-// Deleted user pages and messages still show

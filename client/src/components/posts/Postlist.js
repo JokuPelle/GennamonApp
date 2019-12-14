@@ -6,6 +6,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 class Postlist extends Component {
+    /*Props:
+        singleUser (bool): true if on userpage
+        user (string): URI-encoded signed in username
+        yourPosts (bool): true if on your userpage
+    */
     constructor(props) {
         super(props);
         this.state = {

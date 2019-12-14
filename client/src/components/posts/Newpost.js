@@ -4,6 +4,9 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Form from "react-bootstrap/Form";
 
 class Newpost extends Component {
+    /*Props:
+        username (String)
+    */
     constructor(props) {
         super(props);
         this.state = {

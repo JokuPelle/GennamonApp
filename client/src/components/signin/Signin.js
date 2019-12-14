@@ -6,6 +6,13 @@ import {Link} from "react-router-dom";
 import FormGroup from "react-bootstrap/FormGroup";
 
 class Signin extends Component {
+    /*Props:
+        loggedInStatus (string): LOGGED_IN or NOT_LOGGED_IN
+        checkLoginStatus (function): checks if someone is logged in
+        handleLogin (function): log in
+        handleLogout (function): log out
+        username (string): logged in username
+    */
     constructor(props){
         super(props);
         this.state = {

@@ -1,3 +1,4 @@
+// Homepage
 import React , {Component} from 'react';
 
 //Import boostrap and app css files
@@ -39,8 +40,6 @@ class Home extends Component {
     fetch("api/login/verify")
       .then(res => res.json())
       .then(data => {
-        //console.log("the data: ");
-        //console.log(data);
         if (data.success === true && this.state.loggedInStatus === "NOT_LOGGED_IN") this.handleLogin(data);
         else if (data.success === false && this.state.loggedInStatus === "LOGGED_IN") this.handleLogout();
         })
@@ -53,7 +52,6 @@ class Home extends Component {
   }
 
   render() {
-    //this.checkLoginStatus();
     return (
       <div className="App">
         <Signin
@@ -65,7 +63,7 @@ class Home extends Component {
         <div className="break"/>
         <Newpost username={this.state.user}/>
         <div className="break"/>
-        <Postlist singleUser={false} user={this.state.user} yourPosts={false}/>
+        <Postlist singleUser={false} user={encodeURIComponent(this.state.user)} yourPosts={false}/>
       </div>
     );
   }

@@ -6,8 +6,14 @@ import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 
 class OnePost extends Component {
+    /*Props:
+        username (string): poster
+        message (string): post message
+        date (Number): post date (milliseconds)
+        canDelete (bool): true if on your userpage
+        reload (function): loads all posts
+    */
 
-    //>GreenText
     greenText = (message) => {
         if (message.charAt(0) === ">") return("postMessageGreen");
         else return("postMessage");

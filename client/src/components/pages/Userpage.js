@@ -1,12 +1,9 @@
+// Userpage
 import React , {Component} from 'react';
-//Import boostrap and app css files
-//import "../../../../backend/node_modules/bootstrap/dist/css/bootstrap.css";
 import "../../App.css";
 import Postlist from "../posts/Postlist";
 import Pagebuttons from "../signin/Pagebuttons";
-
 import Container from 'react-bootstrap/Container';
-
 
 class Userpage extends Component {
     constructor(props) {
@@ -50,8 +47,8 @@ class Userpage extends Component {
         window.removeEventListener("resize", this.updateWindowDimensions);
     }
     
-    //Send url-mode name to postlist sice that's only used in a fecth request
     render() {
+        // Determine if page belongs to a user
         let pageTitle, userPostList;
         if (this.state.user === "---User doesn't exist!---") {
             pageTitle = <h3 className="text-center loginStatus">{this.state.user}</h3>

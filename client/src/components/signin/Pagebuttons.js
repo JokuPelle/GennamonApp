@@ -7,6 +7,10 @@ import Form from "react-bootstrap/Form";
 import FormGroup from "react-bootstrap/FormGroup";
 
 class Pagebuttons extends Component {
+    /*Props:
+        isYou (bool): true if on your userpage
+        user (string): url-decoded logged in username
+    */
     constructor(props){
         super(props)
         this.state = {
