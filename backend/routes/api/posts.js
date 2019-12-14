@@ -5,7 +5,7 @@ const router = express.Router();
 const User = require("../../models/User");
 const Post = require("../../models/Post");
 
-// @route POST posts/new
+// @route POST api/posts/new
 // @desc  Create new Post
 router.post("/new", (req, res) => {
     const newPost = new Post({
@@ -18,9 +18,9 @@ router.post("/new", (req, res) => {
         .catch(err => res.json({success: false, error: err, message: "Saving a post failed"}));
 });
 
-// Used by GET posts/load
+// Used by GET api/posts/load:id
 // if viewing a user's page, query string will be passed with a id paramater.
-// If so, then give Post.fin() method a filter 
+// If so, then give Post.find() method a filter 
 const userFilter = (request) => {
     if (request.query.id) {
         console.log("id given "+decodeURIComponent(request.query.id));
@@ -30,7 +30,7 @@ const userFilter = (request) => {
         return({});
     }
 }
-// @route GET posts/load
+// @route GET api/posts/load/:id
 // @desc  Get all posts
 router.get("/load/", (req, res) => {
     Post.find(userFilter(req)).sort({date:-1})
@@ -40,7 +40,7 @@ router.get("/load/", (req, res) => {
     }
 );
 
-// @route POST posts/delete
+// @route POST api/posts/delete
 // @desc  Delete a post
 router.post("/delete", (req, res) => {
     Post.deleteOne({

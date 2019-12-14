@@ -5,8 +5,8 @@ const router = express.Router();
 const User = require("../../models/User");
 const Post = require("../../models/Post");
 
-// @route GET userpage/find
-// @desc  finds all users
+// @route GET userpage/api/find/:id
+// @desc  finds all users based on given id
 router.get("/find/:id", (req, res) => {
     User.find({username: { $regex: new RegExp(decodeURIComponent(req.params.id), "i")}}, (err, foundUsers) => {
         if (err) {res.status(500).json({success: false, message: "Error with user sweep"});
@@ -24,7 +24,7 @@ router.get("/find/:id", (req, res) => {
     });
 });
 
-// @route GET userpage/check
+// @route GET userpage/api/check/:id
 // @desc  check if url user exists
 router.get("/check/:id", (req, res) => {
     User.findOne({username: { $regex: new RegExp(decodeURIComponent(req.params.id), "i") } }, (err, foundUser) => {
@@ -49,7 +49,7 @@ router.get("/check/:id", (req, res) => {
     });
 });
 
-// @route POST userpage/changePassword
+// @route POST userpage/api/changePassword
 // @desc  change password
 router.post("/changepassword", (req, res) => {
     User.findOneAndUpdate({
