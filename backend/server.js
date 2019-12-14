@@ -1,3 +1,5 @@
+// Main server file for Gennamon Backend
+
 const express = require("express");
 const bodyparser = require("body-parser"); //Help with taking requests and reading through the request body
 const mongoose = require("mongoose");
@@ -64,6 +66,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 /*
 //MongoDB Atlas Setup with keystring-----------------------------------------------------
+//requires config folder with keys.js file, with module.exports = {mongoURI: "accessString"}
 const db = require("./config/keys").mongoURI;
 mongoose
     .connect(db, { useNewUrlParser: true , useUnifiedTopology: true})
