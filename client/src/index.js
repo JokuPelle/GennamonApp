@@ -21,13 +21,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-//Todennäköset pisteet
-// 30 - Make posts, Multiple users, View users' posts, Basic CSS, node, npm
-// 15 - React frontend
-// 5  - Mongo
-// +3 - Mongoose
-// 5  - Bootstrap
-// 5  - User registration
-// = 63
-// 5+5+3 - Docker Compatable & Rahti & More than 1 container
